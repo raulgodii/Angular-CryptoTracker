@@ -1,0 +1,5 @@
+<h1>Trending Coins</h1>
+
+<ul>
+    <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <button (click)="viewDetail(item.item.coin_id)">View Detail</button></li>
+</ul>
