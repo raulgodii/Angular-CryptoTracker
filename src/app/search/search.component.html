@@ -3,3 +3,5 @@
 <ul>
     <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <button (click)="viewDetail(item.item.coin_id)">View Detail</button></li>
 </ul>
+
+<input type="text" [(ngModel)]="searchInput" placeholder="Search coin..." (keyup.enter)="searchCoin()"><button (click)="searchCoin()">Search</button>

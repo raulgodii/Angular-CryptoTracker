@@ -1,6 +1,6 @@
 <main>
   <app-header></app-header>
   <!-- <app-landing></app-landing> -->
-  <app-search (idEvent)="openDetailEvent($event)"></app-search>
+  <app-search (idEvent)="openDetailEvent($event)" *ngIf="!openDetail"></app-search>
   <app-detail *ngIf="openDetail" [id]="detailID" (closeDetailEvent)="closeDetail()"></app-detail>
 </main>
