@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })

@@ -1,7 +1,7 @@
 <h1>Trending Coins</h1>
 
 <ul>
-    <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <button (click)="viewDetail(item.item.coin_id)">View Detail</button></li>
+    <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <a routerLink="/detail/{{item.item.coin_id}}">View detail</a> <!--<button (click)="viewDetail(item.item.coin_id)">View Detail</button>--></li>
 </ul>
 
 <input type="text" [(ngModel)]="searchInput" placeholder="Search coin..." (keyup.enter)="searchCoin()"><button (click)="searchCoin()">Search</button>
