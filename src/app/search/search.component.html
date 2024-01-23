@@ -1,4 +1,23 @@
-<h1>Trending Coins</h1>
+<!-- Header Start -->
+ <div class="container-fluid hero-header bg-light py-5 mb-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-3 animated slideInDown">Search Coins</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Search</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-6 animated fadeIn">
+                <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="../../assets/img/hero-2.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
 
 <ul>
     <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <a routerLink="/detail/{{item.item.coin_id}}">View detail</a> <!--<button (click)="viewDetail(item.item.coin_id)">View Detail</button>--></li>
