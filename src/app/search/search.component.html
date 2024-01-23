@@ -1,5 +1,5 @@
 <!-- Header Start -->
- <div class="container-fluid hero-header bg-light py-5 mb-5">
+<div class="container-fluid hero-header bg-light py-5 mb-5">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
@@ -12,19 +12,51 @@
                 </nav>
             </div>
             <div class="col-lg-6 animated fadeIn">
-                <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;" src="../../assets/img/hero-2.png" alt="">
+                <img class="img-fluid animated pulse infinite" style="animation-duration: 3s;"
+                    src="../../assets/img/hero-2.png" alt="">
             </div>
         </div>
     </div>
 </div>
 <!-- Header End -->
 
+
+<!-- Trending Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-6">Trending coins!</h1>
+            <p class="text-primary fs-5 mb-5">Top 6 in the last 24 hours</p>
+        </div>
+        <div class="row g-5">
+            <div *ngFor="let item of RequestAJAX.trendingCoins" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="d-flex align-items-start">
+                    <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
+                    <div class="ps-4">
+                        <h5 class="mb-3">{{ item.item.name }}</h5>
+                        <h6>{{ item.item.data.price }}</h6>
+                        <img class="img-fluid flex-shrink-0" src="{{ item.item.data.sparkline }}" alt="">
+                        <br>
+                        <span>{{ item.item.data.price_change_percentage_24h.usd }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="service"></div>
+</div>
+<!-- Trending End -->
+
 <ul>
-    <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <a routerLink="/detail/{{item.item.coin_id}}">View detail</a> <!--<button (click)="viewDetail(item.item.coin_id)">View Detail</button>--></li>
+    <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <a
+            routerLink="/detail/{{item.item.coin_id}}">View detail</a>
+        <!--<button (click)="viewDetail(item.item.coin_id)">View Detail</button>--></li>
 </ul>
 
-<input type="text" [(ngModel)]="searchInput" placeholder="Search coin..." (keyup.enter)="searchCoin()"><button (click)="searchCoin()">Search</button>
+<input type="text" [(ngModel)]="searchInput" placeholder="Search coin..." (keyup.enter)="searchCoin()"><button
+    (click)="searchCoin()">Search</button>
 
 <ul>
-    <li *ngFor="let item of RequestAJAX.searchResponse">{{ item.name }} <a routerLink="/detail/{{item.id}}">View detail</a></li>
+    <li *ngFor="let item of RequestAJAX.searchResponse">{{ item.name }} <a routerLink="/detail/{{item.id}}">View
+            detail</a></li>
 </ul>
