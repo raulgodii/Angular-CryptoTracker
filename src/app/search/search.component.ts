@@ -31,6 +31,7 @@ export class SearchComponent implements OnInit {
 
   searchCoin(){
     console.log(this.searchInput);
+    this.searchInput = "";
   }
   
 }
