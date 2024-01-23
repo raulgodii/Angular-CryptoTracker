@@ -5,3 +5,7 @@
 </ul>
 
 <input type="text" [(ngModel)]="searchInput" placeholder="Search coin..." (keyup.enter)="searchCoin()"><button (click)="searchCoin()">Search</button>
+
+<ul>
+    <li *ngFor="let item of RequestAJAX.searchResponse">{{ item.name }} <a routerLink="/detail/{{item.id}}">View detail</a></li>
+</ul>
