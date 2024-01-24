@@ -29,17 +29,22 @@
             <p class="text-primary fs-5 mb-5">Top 6 in the last 24 hours</p>
         </div>
         <div class="row g-5">
-            <div *ngFor="let item of RequestAJAX.trendingCoins" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="d-flex align-items-start">
-                    <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
-                    <div class="ps-4">
-                        <h5 class="mb-3">{{ item.item.name }}</h5>
-                        <h6>{{ item.item.data.price }}</h6>
-                        <img class="img-fluid flex-shrink-0" src="{{ item.item.data.sparkline }}" alt="">
-                        <br>
-                        <span>{{ item.item.data.price_change_percentage_24h.usd }}</span>
+            <div *ngFor="let item of RequestAJAX.trendingCoins.slice(0, 6)" class="col-lg-4 col-md-6 wow fadeInUp"
+                data-wow-delay="0.1s">
+                <a routerLink="/detail/{{item.item.coin_id}}">
+                    <div class="d-flex align-items-start">
+                        <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
+                        <div class="ps-4">
+                            <h5 class="mb-3"> {{ item.item.name }} </h5>
+
+                            <h6>{{ item.item.data.price }}</h6>
+                            <img class="img-fluid flex-shrink-0" src="{{ item.item.data.sparkline }}" alt="">
+                            <br>
+
+                            <!-- <span>{{ item.item.data.price_change_percentage_24h.usd }}</span> -->
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -47,16 +52,57 @@
 </div>
 <!-- Trending End -->
 
-<ul>
-    <li *ngFor="let item of RequestAJAX.trendingCoins">{{ item.item.name }} <a
-            routerLink="/detail/{{item.item.coin_id}}">View detail</a>
-        <!--<button (click)="viewDetail(item.item.coin_id)">View Detail</button>--></li>
-</ul>
 
-<input type="text" [(ngModel)]="searchInput" placeholder="Search coin..." (keyup.enter)="searchCoin()"><button
-    (click)="searchCoin()">Search</button>
-
-<ul>
-    <li *ngFor="let item of RequestAJAX.searchResponse">{{ item.name }} <a routerLink="/detail/{{item.id}}">View
-            detail</a></li>
-</ul>
+<!-- Search Start -->
+<div class="container-xxl bg-light py-5 my-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-6">Search coins</h1>
+            <p class="text-primary fs-5 mb-5">Search, analize and follow.</p>
+        </div>
+        <div class="position-relative">
+            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Search coins..."
+                [(ngModel)]="searchInput" (keyup.enter)="searchCoin()">
+            <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2"
+                (click)="searchCoin()">Search</button>
+        </div>
+        <br><br>
+        <div class="row g-4 d-flex align-items-center justify-content-center">
+            <div class="col-lg-10 col-md-6 wow" data-wow-delay="0.1s" *ngIf="firstSearch">
+                <table class="table">
+                    <thead>
+                        <tr class="wow fadeInUp" style="background-color: #16D5FF; color: white;">
+                            <th scope="col">#</th>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white wow fadeInUp" *ngFor="let item of RequestAJAX.searchResponse">
+                            <th scope="row">{{ item.market_cap_rank }}</th>
+                            <td><img src="{{ item.thumb }}" alt="thumb"></td>
+                            <td>{{ item.name }}</td>
+                            <td style="color: rgb(196, 196, 196); font-size: 13px;">{{ item.symbol }}</td>
+                            <td><a routerLink="/detail/{{item.id}}">View
+                                    detail</a></td>
+                            <td><a routerLink="/detail/{{item.id}}">Follow</a></td>
+                        </tr>
+                        <tr class="bg-white wow fadeInUp" *ngIf="RequestAJAX.searchResponse.length == 0">
+                            <th scope="row"></th>
+                            <td></td>
+                            <td></td>
+                            <td>No results</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="roadmap"></div>
+</div>
+<!-- Search End -->

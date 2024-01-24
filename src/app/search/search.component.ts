@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
 
   @Output() idEvent = new EventEmitter<string>();
   searchInput:any;
+  firstSearch:boolean = false;
 
   constructor(public RequestAJAX:RequestAJAXService){
 
@@ -32,6 +33,7 @@ export class SearchComponent implements OnInit {
 
   searchCoin(){
     console.log(this.searchInput);
+    this.firstSearch = true;
 
     this.RequestAJAX.searchCoin(this.searchInput);
 
