@@ -5,11 +5,12 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, LandingComponent, SearchComponent, DetailComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, LandingComponent, SearchComponent, DetailComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

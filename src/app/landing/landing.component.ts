@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -7,7 +9,20 @@ import { Component } from '@angular/core';
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit{
+  
+  constructor(private scroll:ViewportScroller, private router:ActivatedRoute){
+
+  }
+
+  ngOnInit(): void {
+      if(this.router.snapshot.fragment){
+        this.scroll.scrollToAnchor(this.router.snapshot.fragment);
+      } else {
+        this.scroll.scrollToPosition([0, 0]);
+      }
+  }
+
 
 }
 

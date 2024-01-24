@@ -1,6 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { RequestAJAXService } from '../request-ajax.service';
 
 @Component({
   selector: 'app-detail',
@@ -9,9 +12,21 @@ import { RouterModule } from '@angular/router';
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
-export class DetailComponent {
+export class DetailComponent implements OnInit{
   @Input() id:any;
   @Output() closeDetailEvent = new EventEmitter<string>();
+
+  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute){
+
+  }
+
+  ngOnInit(): void {
+    if(this.router.snapshot.fragment){
+      this.scroll.scrollToAnchor(this.router.snapshot.fragment);
+    } else {
+      this.scroll.scrollToPosition([0, 0]);
+    }
+  }
 
   closeDetail(){
     this.closeDetailEvent.emit();

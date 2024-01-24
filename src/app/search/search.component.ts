@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -19,12 +21,18 @@ export class SearchComponent implements OnInit {
   searchInput:any;
   firstSearch:boolean = false;
 
-  constructor(public RequestAJAX:RequestAJAXService){
+  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute){
 
   }
 
   ngOnInit(): void {
     this.RequestAJAX.getTrending();
+
+    if(this.router.snapshot.fragment){
+      this.scroll.scrollToAnchor(this.router.snapshot.fragment);
+    } else {
+      this.scroll.scrollToPosition([0, 0]);
+    }
   }
 
   viewDetail(id:any){
