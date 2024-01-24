@@ -29,9 +29,9 @@
             <p class="text-primary fs-5 mb-5">Top 6 in the last 24 hours</p>
         </div>
         <div class="row g-5">
-            <div *ngFor="let item of RequestAJAX.trendingCoins.slice(0, 6)" class="col-lg-4 col-md-6 wow fadeInUp"
+            <div *ngFor="let item of RequestAJAX.trendingCoins.slice(0, 6)" class=" trendingCoin-hover col-lg-4 col-md-6 wow fadeInUp"
                 data-wow-delay="0.1s">
-                <a routerLink="/detail/{{item.item.coin_id}}">
+                <a routerLink="/detail/{{item.item.id}}">
                     <div class="d-flex align-items-start">
                         <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
                         <div class="ps-4">

@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RequestAJAXService } from '../request-ajax.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
@@ -21,6 +23,8 @@ export class DetailComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.RequestAJAX.getDataCoin(this.id);
+
     if(this.router.snapshot.fragment){
       this.scroll.scrollToAnchor(this.router.snapshot.fragment);
     } else {

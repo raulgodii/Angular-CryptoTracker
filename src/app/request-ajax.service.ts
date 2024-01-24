@@ -8,6 +8,7 @@ export class RequestAJAXService {
 
   trendingCoins: any[] = [];
   searchResponse: any[] = [];
+  coinData: any = null;
 
   constructor(private http: HttpClient) {
   }
@@ -19,10 +20,17 @@ export class RequestAJAXService {
     });
   }
 
-  searchCoin(searchInput:any){
+  searchCoin(searchInput: any) {
     this.http.get("https://api.coingecko.com/api/v3/search?query=" + searchInput).subscribe((searchResponse: any) => {
       this.searchResponse = searchResponse.coins;
-    console.log(searchResponse.coins);
+      console.log(searchResponse.coins);
+    });
+  }
+
+  getDataCoin(idCoin: any) {
+    this.http.get("https://api.coingecko.com/api/v3/coins/" + idCoin).subscribe((response: any) => {
+      this.coinData = response;
+      console.log(response);
     });
   }
 }

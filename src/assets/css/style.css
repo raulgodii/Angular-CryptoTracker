@@ -417,3 +417,11 @@ h6,
   background-color: gray;
   opacity: 0.5;
 }
+
+.trendingCoin-hover {
+    transition: 0.3s;
+}
+
+.trendingCoin-hover:hover {
+    transform: scale(1.1);
+}
