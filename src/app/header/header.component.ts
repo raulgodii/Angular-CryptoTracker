@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { RequestAJAXService } from '../request-ajax.service';
 
 @Component({
   selector: 'app-header',
@@ -10,4 +11,11 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
 
+  constructor(public requestAjax:RequestAJAXService){
+
+  }
+
+  obtenerDatos(){
+    this.requestAjax.obtenerDatosFirestore();
+  }
 }
