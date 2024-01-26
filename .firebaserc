@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cryptotracker-f9030": {
+      "hosting": {
+        "angular-project": [
+          "cryptotracker-f9030"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cryptotracker-f9030"
+  }
+}
