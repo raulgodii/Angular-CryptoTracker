@@ -29,8 +29,8 @@
             <p class="text-primary fs-5 mb-5">Top 6 in the last 24 hours</p>
         </div>
         <div class="row g-5">
-            <div *ngFor="let item of RequestAJAX.trendingCoins.slice(0, 6)" class=" trendingCoin-hover col-lg-4 col-md-6 wow fadeInUp"
-                data-wow-delay="0.1s">
+            <div *ngFor="let item of RequestAJAX.trendingCoins.slice(0, 6)"
+                class=" trendingCoin-hover col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <a routerLink="/detail/{{item.item.id}}">
                     <div class="d-flex align-items-start">
                         <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
@@ -54,7 +54,7 @@
 
 
 <!-- Search Start -->
-<div class="container-xxl bg-light py-5 my-5">
+<div class="container-xl bg-light py-5 my-5">
     <div class="container py-5">
         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <h1 class="display-6">Search coins</h1>
@@ -69,7 +69,15 @@
         <br><br>
         <div class="row g-4 d-flex align-items-center justify-content-center">
             <div class="col-lg-10 col-md-6 wow" data-wow-delay="0.1s" *ngIf="firstSearch">
-                <table class="table">
+
+                <!-- Spinner Start -->
+                <div id="spinner" *ngIf="RequestAJAX.spinner"
+                    class="show position-relative translate-middle w-100 top-50 start-50 d-flex align-items-center justify-content-center">
+                    <div class="spinner-grow text-primary" role="status"></div>
+                </div>
+                <!-- Spinner End -->
+
+                <table class="table" *ngIf="!RequestAJAX.spinner">
                     <thead>
                         <tr class="wow fadeInUp" style="background-color: #16D5FF; color: white;">
                             <th scope="col">#</th>
