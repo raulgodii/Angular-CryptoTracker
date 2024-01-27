@@ -1,8 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, getDocs, collection, onSnapshot } from 'firebase/firestore';
-import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +10,6 @@ export class RequestAJAXService {
   searchResponse: any[] = [];
   coinData: any = null;
   spinner: boolean = false;
-  firestore = inject(Firestore); // Exactamente lo mismo que importarlo en el constructor
-  datosFS:any[] = [];
 
   constructor(private http: HttpClient) {
   }
@@ -44,13 +39,6 @@ export class RequestAJAXService {
       this.coinData = response;
       console.log(response);
       this.spinner = false;
-    });
-  }
-
-  obtenerDatosFirestore(){
-    getDocs(collection(this.firestore, "portfolio")).then((response) => {
-      this.datosFS = response.docs.map(doc => doc.data());
-      console.log(this.datosFS);
     });
   }
 }

@@ -29,10 +29,10 @@
                 </div>
             </div> -->
         </div>
-        <a href="" class="btn btn-primary py-2 px-3 animated slideInRight">Register</a>
-        <a routerLink="login" class="btn btn-primary py-2 px-3 mx-2 animated slideInRight">Log in</a>
+        <a *ngIf="!userService.user" class="btn btn-primary py-2 px-3 animated slideInRight">Register</a>
+        <a *ngIf="!userService.user" routerLink="login" class="btn btn-primary py-2 px-3 mx-2 animated slideInRight">Log in</a>
+        <a *ngIf="userService.user" (click)="signOut()" class="btn btn-primary py-2 px-3 mx-2 animated slideInRight">Sign Out</a>
         <a (click)="obtenerDatos()" class="btn btn-primary py-2 px-3 mx-2 animated slideInRight">Obtener datos</a>
-        <a class="btn btn-primary py-2 px-3 mx-2 animated slideInRight">Google</a>
     </div>
 </nav>
 <!-- Navbar End -->

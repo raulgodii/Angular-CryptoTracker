@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -6,6 +6,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserControlService } from './user-control.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { FooterComponent } from './footer/footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent{
   title = 'angular-project';
   openDetail:boolean = false;
   detailID:any;
