@@ -1,6 +1,6 @@
-import { Injectable,inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, getDocs, collection, onSnapshot } from 'firebase/firestore';
+import { getFirestore, getDocs, collection, addDoc, onSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Firestore } from '@angular/fire/firestore';
 export class FirestoreControlService {
   firestore = inject(Firestore); // Exactamente lo mismo que importarlo en el constructor
   datosFS: any[] = [];
+  db: any = getFirestore();
 
   constructor() { }
 
@@ -16,6 +17,15 @@ export class FirestoreControlService {
     getDocs(collection(this.firestore, "portfolio")).then((response) => {
       this.datosFS = response.docs.map(doc => doc.data());
       console.log(this.datosFS);
+    });
+  }
+
+  followCrypto(id: any, name: any) {
+    addDoc(collection(this.db, "portfolio"), {
+      id: id,
+      name: name
+    }).then((docRef) =>{
+      console.log("Document written with ID: ", docRef.id);
     });
   }
 }

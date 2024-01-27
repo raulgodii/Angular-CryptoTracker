@@ -4,6 +4,7 @@ import { DetailComponent } from './detail/detail.component';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 export const routes: Routes = [
     {path: '', component: LandingComponent},
@@ -11,5 +12,6 @@ export const routes: Routes = [
     {path: 'detail/:id', component: DetailComponent},
     {path: 'search', component: SearchComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'signUp', component: SignUpComponent}
+    {path: 'signUp', component: SignUpComponent},
+    {path: 'portfolio', component: PortfolioComponent}
 ];

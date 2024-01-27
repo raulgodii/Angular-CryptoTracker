@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { FirestoreControlService } from '../firestore-control.service';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
   searchInput:any;
   firstSearch:boolean = false;
 
-  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute){
+  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute, public firestoreService:FirestoreControlService){
 
   }
 
@@ -46,6 +47,11 @@ export class SearchComponent implements OnInit {
     this.RequestAJAX.searchCoin(this.searchInput);
 
     this.searchInput = "";
+  }
+
+  
+  followCrypto(id:any, name:any){
+    this.firestoreService.followCrypto(id, name);
   }
   
 }
