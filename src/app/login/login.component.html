@@ -3,7 +3,7 @@
     <div class="container py-3">
         <div class="row g-2 align-items-center">
             <div class="col-lg-12">
-                <form class="form_container mb-3 animated slideInDown w-100">
+                <div class="form_container mb-3 animated slideInDown w-100">
                     <div class="logo_container"></div>
                     <div class="title_container">
                         <p class="title">Login to your Account</p>
@@ -46,7 +46,7 @@
                         <span>Or</span>
                         <hr class="line">
                     </div>
-                    <button title="Sign In" type="submit" class="sign-in_ggl">
+                    <button title="Sign In" class="sign-in_ggl" (click)="signInGoogle()">
                         <svg height="18" width="18" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink"
                             xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -66,7 +66,7 @@
                         </svg>
                         <span>Sign In with Google</span>
                     </button>
-                    <button title="Sign In" type="submit" class="sign-in_apl">
+                    <button title="Sign In" class="sign-in_apl">
                         <svg preserveAspectRatio="xMidYMid" version="1.1" viewBox="0 0 256 315" height="20px" width="16px"
                             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
                             <g>
@@ -78,7 +78,7 @@
                         <span>Sign In with Apple</span>
                     </button>
                     <p class="note">Terms of use &amp; Conditions</p>
-                </form>
+                </div>
             </div>
         </div>
     </div>
