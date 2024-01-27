@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UserControlService implements OnInit {
 
+  spinner: boolean = false;
   auth = getAuth();
   user: any = this.auth.currentUser;
   googleProvider = new GoogleAuthProvider();
@@ -16,10 +17,11 @@ export class UserControlService implements OnInit {
       if (user) {
         // User is signed in
         this.user = user;
+        console.log("ha iniciado sesion");
       } else {
         // User is signed out
         this.user = null;
-        this.router.navigate(["home"]);
+        //this.router.navigate(["home"]);
       }
     });
   }
