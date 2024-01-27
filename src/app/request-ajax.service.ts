@@ -48,7 +48,7 @@ export class RequestAJAXService {
   }
 
   obtenerDatosFirestore(){
-    getDocs(collection(this.firestore, "todos")).then((response) => {
+    getDocs(collection(this.firestore, "portfolio")).then((response) => {
       this.datosFS = response.docs.map(doc => doc.data());
       console.log(this.datosFS);
     });
