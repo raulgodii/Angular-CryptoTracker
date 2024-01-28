@@ -18,10 +18,6 @@ export class HeaderComponent {
 
   }
 
-  obtenerDatos() {
-    this.firestoreService.obtenerDatosFirestore();
-  }
-
   signOut(){
     this.userService.signOut();
   }

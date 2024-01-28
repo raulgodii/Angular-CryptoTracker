@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, getDocs, collection, addDoc, onSnapshot } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
+import { UserControlService } from './user-control.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,12 @@ export class FirestoreControlService {
   datosFS: any[] = [];
   db: any = getFirestore();
 
-  constructor() { }
+  constructor() {
+    getDocs(collection(this.firestore, "portfolio")).then((response) => {
+      this.datosFS = response.docs.map(doc => doc.data());
+      console.log(this.datosFS);
+    });
+  }
 
   obtenerDatosFirestore() {
     getDocs(collection(this.firestore, "portfolio")).then((response) => {
@@ -23,8 +29,8 @@ export class FirestoreControlService {
   followCrypto(id: any, name: any) {
     addDoc(collection(this.db, "portfolio"), {
       id: id,
-      name: name
-    }).then((docRef) =>{
+      uid: ""
+    }).then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
     });
   }
