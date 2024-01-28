@@ -6,6 +6,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserControlService } from './user-control.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,10 @@ export class AppComponent{
   title = 'angular-project';
   openDetail:boolean = false;
   detailID:any;
+
+  constructor(){
+    
+  }
 
   openDetailEvent(id:any){
     this.openDetail = true;

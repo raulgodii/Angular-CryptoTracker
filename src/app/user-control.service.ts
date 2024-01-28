@@ -16,12 +16,13 @@ export class UserControlService implements OnInit {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         // User is signed in
+        console.log("user: "+ user);
         this.user = user;
         console.log("ha iniciado sesion");
       } else {
         // User is signed out
         this.user = null;
-        //this.router.navigate(["home"]);
+        this.router.navigate(["home"]);
       }
     });
   }
@@ -39,7 +40,7 @@ export class UserControlService implements OnInit {
           const token = credential.accessToken;
           // The signed-in user info.
           this.user = result.user;
-          console.log(this.user);
+          this.router.navigate(["portfolio"]);
           // IdP data available using getAdditionalUserInfo(result)
           // ...
 
@@ -64,9 +65,14 @@ export class UserControlService implements OnInit {
     signOut(this.auth).then(() => {
       // Sign-out successful.
       this.user = null;
+      this.router.navigate(["home"]);
     }).catch((error) => {
       // An error happened.
       console.log("error: " + error);
     });
+  }
+
+  getUser(){
+    return getAuth().currentUser;
   }
 }

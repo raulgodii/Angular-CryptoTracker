@@ -5,13 +5,15 @@ import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { isLogGuard } from './is-log.guard';
+import { noLogGuard } from './no-log.guard';
 
 export const routes: Routes = [
     {path: '', component: LandingComponent},
     {path: 'home', component: LandingComponent},
     {path: 'detail/:id', component: DetailComponent},
     {path: 'search', component: SearchComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'signUp', component: SignUpComponent},
-    {path: 'portfolio', component: PortfolioComponent}
+    {path: 'login', component: LoginComponent, canActivate:[noLogGuard]},
+    {path: 'signUp', component: SignUpComponent, canActivate:[noLogGuard]},
+    {path: 'portfolio', component: PortfolioComponent, canActivate:[isLogGuard]}
 ];

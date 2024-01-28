@@ -23,6 +23,18 @@ export class PortfolioComponent implements OnInit {
 
     this.firestoreService.getPortfolio(this.userService.user.uid);
 
+    // this.userService.getUser().then(user => {
+    //   if (user) {
+    //     // Usuario autenticado, realizar operaciones necesarias
+    //     this.firestoreService.getPortfolio(user.uid);
+    //     // Resto del código...
+    //   } else {
+    //     // Usuario no autenticado, redirigir o realizar acciones necesarias
+    //     // Por ejemplo, redirigir al componente de inicio de sesión
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
+
     if(this.router.snapshot.fragment){
       this.scroll.scrollToAnchor(this.router.snapshot.fragment);
     } else {
