@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { FirestoreControlService } from '../firestore-control.service';
+import { UserControlService } from '../user-control.service';
 
 @Component({
   selector: 'app-search',
@@ -22,9 +23,10 @@ export class SearchComponent implements OnInit {
   searchInput:any;
   firstSearch:boolean = false;
 
-  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute, public firestoreService:FirestoreControlService){
+  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute, public firestoreService:FirestoreControlService, public userService: UserControlService){
 
   }
+
 
   ngOnInit(): void {
     this.RequestAJAX.getTrending();
@@ -50,8 +52,8 @@ export class SearchComponent implements OnInit {
   }
 
   
-  followCrypto(id:any, name:any){
-    this.firestoreService.followCrypto(id, name);
+  followCrypto(id:any){
+    this.firestoreService.followCrypto(id, this.userService.user.uid);
   }
   
 }

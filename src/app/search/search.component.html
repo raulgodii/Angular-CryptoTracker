@@ -96,7 +96,7 @@
                             <td style="color: rgb(196, 196, 196); font-size: 13px;">{{ item.symbol }}</td>
                             <td><a routerLink="/detail/{{item.id}}">View
                                     detail</a></td>
-                            <td><button class="btn btn-primary animated slideInRigh" (click)="followCrypto(item.id, item.name)">Follow</button></td>
+                            <td><button class="btn btn-primary animated slideInRigh" (click)="followCrypto(item.id)">Follow</button></td>
                         </tr>
                         <tr class="bg-white wow fadeInUp" *ngIf="RequestAJAX.searchResponse.length == 0">
                             <th scope="row"></th>

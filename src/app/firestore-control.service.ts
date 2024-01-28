@@ -26,10 +26,10 @@ export class FirestoreControlService {
     });
   }
 
-  followCrypto(id: any, name: any) {
+  followCrypto(id: any, uid: any) {
     addDoc(collection(this.db, "portfolio"), {
       id: id,
-      uid: ""
+      uid: uid
     }).then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
     });

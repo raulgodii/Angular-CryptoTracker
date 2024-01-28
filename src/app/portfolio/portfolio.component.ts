@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FirestoreControlService } from '../firestore-control.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-portfolio',
@@ -9,9 +10,18 @@ import { RouterModule } from '@angular/router';
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements OnInit {
 
-  constructor(public firestoreService:FirestoreControlService){
+  constructor(public firestoreService:FirestoreControlService, private scroll:ViewportScroller, private router:ActivatedRoute){
 
+  }
+
+  ngOnInit(): void {
+
+    if(this.router.snapshot.fragment){
+      this.scroll.scrollToAnchor(this.router.snapshot.fragment);
+    } else {
+      this.scroll.scrollToPosition([0, 0]);
+    }
   }
 }
