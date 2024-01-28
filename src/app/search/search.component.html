@@ -29,22 +29,31 @@
             <p class="text-primary fs-5 mb-5">Top 6 in the last 24 hours</p>
         </div>
         <div class="row g-5">
+            <!-- Spinner Start -->
+            <div class="wow fadeInUp" id="spinner" *ngIf="RequestAJAX.spinner"
+                class="show position-relative translate-middle w-100 top-50 start-50 d-flex align-items-center justify-content-center">
+                <div class="spinner-grow text-primary" role="status"></div>
+            </div>
+            <!-- Spinner End -->
             <div *ngFor="let item of RequestAJAX.trendingCoins.slice(0, 6)"
                 class=" trendingCoin-hover col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <a routerLink="/detail/{{item.item.id}}">
-                    <div class="d-flex align-items-start">
-                        <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
-                        <div class="ps-4">
+
+                <div class="d-flex align-items-center justify-content-center mb-5">
+
+                    <img class="img-fluid flex-shrink-0" src="{{ item.item.small }}" alt="">
+                    <div class="ps-4">
+                        <a routerLink="/detail/{{item.item.id}}">
                             <h5 class="mb-3"> {{ item.item.name }} </h5>
 
                             <h6>{{ item.item.data.price }}</h6>
                             <img class="img-fluid flex-shrink-0" src="{{ item.item.data.sparkline }}" alt="">
-                            <br>
-
-                            <!-- <span>{{ item.item.data.price_change_percentage_24h.usd }}</span> -->
-                        </div>
+                            <br><br>
+                        </a>
+                        <button *ngIf="userService.user" class="btn btn-primary animated slideInRigh"
+                            (click)="followCrypto(item.id)">Follow</button>
                     </div>
-                </a>
+                </div>
+
             </div>
         </div>
     </div>
@@ -83,9 +92,9 @@
                             <th scope="col">#</th>
                             <th scope="col"></th>
                             <th scope="col">Name</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
+                            <th scope="col">Symbol</th>
+                            <th scope="col">Detail</th>
+                            <th *ngIf="userService.user" scope="col">Follow</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,7 +105,8 @@
                             <td style="color: rgb(196, 196, 196); font-size: 13px;">{{ item.symbol }}</td>
                             <td><a routerLink="/detail/{{item.id}}">View
                                     detail</a></td>
-                            <td><button class="btn btn-primary animated slideInRigh" (click)="followCrypto(item.id)">Follow</button></td>
+                            <td *ngIf="userService.user"><button class="btn btn-primary animated slideInRigh"
+                                    (click)="followCrypto(item.id)">Follow</button></td>
                         </tr>
                         <tr class="bg-white wow fadeInUp" *ngIf="RequestAJAX.searchResponse.length == 0">
                             <th scope="row"></th>
@@ -104,7 +114,7 @@
                             <td></td>
                             <td>No results</td>
                             <td></td>
-                            <td></td>
+                            <td *ngIf="userService.user"></td>
                         </tr>
                     </tbody>
                 </table>

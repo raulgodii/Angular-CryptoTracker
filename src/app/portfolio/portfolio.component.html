@@ -19,3 +19,61 @@
     </div>
 </div>
 <!-- Header End -->
+
+<!-- Search Start -->
+<div class="container-xl bg-white py-5 my-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-6">Personal area</h1>
+            <p class="text-primary fs-5 mb-5">Manage and track your cryptocurrency portfolio in one place</p>
+        </div>
+        <div class="row g-4 d-flex align-items-center justify-content-center">
+            <div class="col-lg-10 col-md-6 wow" data-wow-delay="0.1s">
+
+                <!-- Spinner Start -->
+                <div id="spinner" *ngIf="RequestAJAX.spinner"
+                    class="show position-relative translate-middle w-100 top-50 start-50 d-flex align-items-center justify-content-center">
+                    <div class="spinner-grow text-primary" role="status"></div>
+                </div>
+                <!-- Spinner End -->
+
+                <table class="table" *ngIf="!RequestAJAX.spinner">
+                    <thead>
+                        <tr class="wow fadeInUp" style="background-color: #16D5FF; color: white;">
+                            <th scope="col">#</th>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Symbol</th>
+                            <th scope="col">Detail</th>
+                            <th *ngIf="userService.user" scope="col">Unfollow</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white wow fadeInUp" *ngFor="let item of firestoreService.portfolio">
+                            <th scope="row"></th>
+                            <td><img src="" alt="thumb"></td>
+                            <td>{{item.id}}</td>
+                            <td style="color: rgb(196, 196, 196); font-size: 13px;"></td>
+                            <td><a routerLink="/detail/">View
+                                    detail</a></td>
+                            <td *ngIf="userService.user"><button class="btn btn-primary animated slideInRigh"
+                                    (click)="unfollowCrypto(item.id)">Follow</button></td>
+                        </tr>
+                        <tr class="bg-white wow fadeInUp" *ngIf="firestoreService.portfolio.length == 0">
+                            <th scope="row"></th>
+                            <td></td>
+                            <td></td>
+                            <td>Your portfolio is empty.</td>
+                            <td></td>
+                            <td *ngIf="userService.user"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- <p>Coin: {{ RequestAJAX.coinData.name }}</p>
+<p>Symbol: {{ RequestAJAX.coinData.symbol }}</p> -->

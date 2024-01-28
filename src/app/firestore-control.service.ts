@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, getDocs, collection, addDoc, onSnapshot } from 'firebase/firestore';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, query, where } from '@angular/fire/firestore';
 import { UserControlService } from './user-control.service';
 
 @Injectable({
@@ -9,20 +9,19 @@ import { UserControlService } from './user-control.service';
 })
 export class FirestoreControlService {
   firestore = inject(Firestore); // Exactamente lo mismo que importarlo en el constructor
-  datosFS: any[] = [];
+  portfolio: any[] = [];
   db: any = getFirestore();
 
   constructor() {
-    getDocs(collection(this.firestore, "portfolio")).then((response) => {
-      this.datosFS = response.docs.map(doc => doc.data());
-      console.log(this.datosFS);
-    });
+
   }
 
-  obtenerDatosFirestore() {
-    getDocs(collection(this.firestore, "portfolio")).then((response) => {
-      this.datosFS = response.docs.map(doc => doc.data());
-      console.log(this.datosFS);
+  getPortfolio(uid: any) {
+    const portfolioCollection = collection(this.firestore, "portfolio");
+    const queryByUid = query(portfolioCollection, where('uid', '==', uid));
+    getDocs(queryByUid).then((response) => {
+      this.portfolio = response.docs.map(doc => doc.data());
+      console.log(this.portfolio);
     });
   }
 
@@ -33,5 +32,9 @@ export class FirestoreControlService {
     }).then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
     });
+  }
+
+  unfollowCrypto(id: any) {
+
   }
 }
