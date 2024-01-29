@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,11 +12,11 @@ export class UserControlService implements OnInit {
   user: any = this.auth.currentUser;
   googleProvider = new GoogleAuthProvider();
 
-  constructor(private router:Router) {
+  constructor(private router: Router) {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         // User is signed in
-        console.log("user: "+ user);
+        console.log("user: " + user);
         this.user = user;
         console.log("ha iniciado sesion");
       } else {
@@ -70,5 +70,57 @@ export class UserControlService implements OnInit {
       // An error happened.
       console.log("error: " + error);
     });
+  }
+
+  async signInUserPass(email: string, password: string): Promise<{ success: boolean, error?: string }> {
+    try {
+      // Validaciones iniciales
+      this.validateEmail(email);
+      this.validatePassword(password);
+  
+      // Inicio de sesión con Firebase
+      const userCredential: any = await signInWithEmailAndPassword(this.auth, email, password);
+  
+      // Éxito, el usuario ha iniciado sesión correctamente.
+      this.user = userCredential.user;
+      this.router.navigate(["portfolio"]);
+      return { success: true, error: undefined };
+  
+    } catch (error: any) {
+      // Manejo de errores
+      const errorCode = error.code;
+      const errorMessage = error.message;
+  
+      if (errorCode === 'auth/user-not-found') {
+        return { success: false, error: 'User not found. Please check your email or sign up.' };
+      } else if (errorCode === 'auth/wrong-password') {
+        return { success: false, error: 'Incorrect password. Please try again.' };
+      } else if (errorCode === 'auth/invalid-email') {
+        return { success: false, error: 'Invalid email format. Please provide a valid email address.' };
+      } else {
+        // Otros errores no manejados específicamente
+        return { success: false, error: `Error signing in: ${errorMessage}` };
+      }
+    }
+  }
+  
+  private validateEmail(email: string): void {
+    if (!email) {
+      throw new Error('Please provide an email.');
+    }
+  
+    // Verificar el formato del correo electrónico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      throw new Error('Please provide a valid email address.');
+    }
+  }
+  
+  private validatePassword(password: string): void {
+    if (!password) {
+      throw new Error('Please provide a password.');
+    }
+  
+    // Puedes agregar más validaciones según tus requisitos.
   }
 }
