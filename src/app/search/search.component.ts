@@ -22,6 +22,8 @@ export class SearchComponent implements OnInit {
   @Output() idEvent = new EventEmitter<string>();
   searchInput:any;
   firstSearch:boolean = false;
+  alert:boolean = false;
+  coinFollow: any;
 
   constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute, public firestoreService:FirestoreControlService, public userService: UserControlService){
 
@@ -54,6 +56,13 @@ export class SearchComponent implements OnInit {
   
   followCrypto(rank: any, thumb:any, name: any, symbol: any, id:any){
     this.firestoreService.followCrypto(rank, thumb, name, symbol, id, this.userService.user.uid);
+
+    this.coinFollow = name;
+
+    this.alert = true;
+    setTimeout(() => {
+      this.alert = false;
+    }, 2000);
   }
   
 }

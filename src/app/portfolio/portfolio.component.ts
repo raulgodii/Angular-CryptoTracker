@@ -14,6 +14,8 @@ import { UserControlService } from '../user-control.service';
   styleUrl: './portfolio.component.css'
 })
 export class PortfolioComponent implements OnInit {
+  alert:boolean = false;
+  coinFollow: any;
 
   constructor(public firestoreService:FirestoreControlService, public userService: UserControlService, public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute){
 
@@ -22,6 +24,7 @@ export class PortfolioComponent implements OnInit {
   ngOnInit(): void {
 
     this.firestoreService.getPortfolio(this.userService.user.uid);
+
 
     // this.userService.getUser().then(user => {
     //   if (user) {
@@ -42,8 +45,15 @@ export class PortfolioComponent implements OnInit {
     }
   }
 
-  unfollowCrypto(id: any){
+  unfollowCrypto(id: any, name: any){
     this.firestoreService.unfollowCrypto(id);
+
+    this.coinFollow = name;
+
+    this.alert = true;
+    setTimeout(() => {
+      this.alert = false;
+    }, 2000);
   }
 
   getDataCoin(id: any){
