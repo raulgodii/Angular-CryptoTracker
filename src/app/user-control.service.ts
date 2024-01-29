@@ -71,8 +71,4 @@ export class UserControlService implements OnInit {
       console.log("error: " + error);
     });
   }
-
-  getUser(){
-    return getAuth().currentUser;
-  }
 }

@@ -19,10 +19,14 @@ export class DetailComponent implements OnInit{
   @Output() closeDetailEvent = new EventEmitter<string>();
 
   constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute){
-
+    this.router.params.subscribe(params => {
+      const id = params['id'];
+      // Puedes hacer algo con el ID aquí, como cargar los datos asociados al detalle.
+   });
   }
 
   ngOnInit(): void {
+    console.log("ID: " + this.id)
     this.RequestAJAX.getDataCoin(this.id);
 
     if(this.router.snapshot.fragment){
