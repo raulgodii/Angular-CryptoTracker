@@ -50,7 +50,7 @@
                             <br><br>
                         </a>
                         <button *ngIf="userService.user" class="btn btn-primary animated slideInRigh"
-                            (click)="followCrypto(item.item.id)">Follow</button>
+                            (click)="followCrypto(item.item.market_cap_rank, item.item.thumb, item.item.name, item.item.symbol, item.item.id)">Follow</button>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                             <td><a routerLink="/detail/{{item.id}}">View
                                     detail</a></td>
                             <td *ngIf="userService.user"><button class="btn btn-primary animated slideInRigh"
-                                    (click)="followCrypto(item.id)">Follow</button></td>
+                                    (click)="followCrypto(item.market_cap_rank, item.thumb, item.name, item.symbol, item.id)">Follow</button></td>
                         </tr>
                         <tr class="bg-white wow fadeInUp" *ngIf="RequestAJAX.searchResponse.length == 0">
                             <th scope="row"></th>

@@ -52,8 +52,8 @@ export class SearchComponent implements OnInit {
   }
 
   
-  followCrypto(id:any){
-    this.firestoreService.followCrypto(id, this.userService.user.uid);
+  followCrypto(rank: any, thumb:any, name: any, symbol: any, id:any){
+    this.firestoreService.followCrypto(rank, thumb, name, symbol, id, this.userService.user.uid);
   }
   
 }

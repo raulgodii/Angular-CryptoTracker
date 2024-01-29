@@ -21,8 +21,8 @@ export class FirestoreControlService {
     const portfolioCollection = collection(this.firestore, "portfolio");
     const queryByUid = query(portfolioCollection, where('uid', '==', uid));
     
-    getDocs(queryByUid).then((response) => {
-      this.portfolio = response.docs.map(doc => {
+    onSnapshot(queryByUid, (snapshot) => {
+      this.portfolio = snapshot.docs.map(doc => {
         return {
           id: doc.id,
           ...doc.data()
@@ -32,10 +32,13 @@ export class FirestoreControlService {
     });
   }
 
-  followCrypto(id: any, uid: any) {
-    console.log("ID: "+ id);
+  followCrypto(rank: any, thumb:any, name: any, symbol: any, cid: any, uid: any) {
     addDoc(collection(this.db, "portfolio"), {
-      cid: id,
+      rank: rank,
+      thumb: thumb,
+      name: name,
+      symbol: symbol,
+      cid: cid,
       uid: uid
     }).then((docRef) => {
       console.log("Document written with ID: ", docRef.id);

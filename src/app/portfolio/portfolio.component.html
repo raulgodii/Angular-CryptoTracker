@@ -50,11 +50,11 @@
                     </thead>
                     <tbody>
                         <tr class="bg-white wow fadeInUp" *ngFor="let item of firestoreService.portfolio">
-                            <th scope="row"></th>
-                            <td><img src="" alt="thumb"></td>
-                            <td>{{item.cid}}</td>
-                            <td style="color: rgb(196, 196, 196); font-size: 13px;"></td>
-                            <td><a routerLink="/detail/">View
+                            <th scope="row">{{item.rank}}</th>
+                            <td><img src="{{item.thumb}}" alt="thumb"></td>
+                            <td>{{item.name}}</td>
+                            <td style="color: rgb(196, 196, 196); font-size: 13px;">{{item.symbol}}</td>
+                            <td><a routerLink="/detail/{{item.cid}}">View
                                     detail</a></td>
                             <td *ngIf="userService.user"><button class="btn btn-primary animated slideInRigh"
                                     (click)="unfollowCrypto(item.id)">Unfollow</button></td>
