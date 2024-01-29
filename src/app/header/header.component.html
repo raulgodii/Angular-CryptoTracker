@@ -15,7 +15,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 py-lg-0">
-            <a routerLink="home" class="nav-item nav-link">Home</a>
+            <a *ngIf="!userService.user" routerLink="home" class="nav-item nav-link">Home</a>
             <a routerLink="search" class="nav-item nav-link">Search</a>
             <a *ngIf="userService.user" routerLink="portfolio" class="nav-item nav-link">Portfolio</a>
             <!-- <a routerLink="home#about" class="nav-item nav-link">About</a>

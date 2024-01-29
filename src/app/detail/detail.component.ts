@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FirestoreControlService } from '../firestore-control.service';
 import { UserControlService } from '../user-control.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
@@ -20,7 +21,7 @@ export class DetailComponent implements OnInit{
   @Input() id:any;
   @Output() closeDetailEvent = new EventEmitter<string>();
 
-  constructor(public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute, public firestoreService:FirestoreControlService, public userService: UserControlService){
+  constructor(private location: Location, public RequestAJAX:RequestAJAXService, private scroll:ViewportScroller, private router:ActivatedRoute, public firestoreService:FirestoreControlService, public userService: UserControlService){
     this.router.params.subscribe(params => {
       const id = params['id'];
       // Puedes hacer algo con el ID aquí, como cargar los datos asociados al detalle.
@@ -44,5 +45,9 @@ export class DetailComponent implements OnInit{
 
   followCrypto(rank: any, thumb:any, name: any, symbol: any, id:any){
     this.firestoreService.followCrypto(rank, thumb, name, symbol, id, this.userService.user.uid);
+  }
+
+  back() {
+    this.location.back();
   }
 }
