@@ -52,20 +52,15 @@
                         <tr class="bg-white wow fadeInUp" *ngFor="let item of firestoreService.portfolio">
                             <th scope="row"></th>
                             <td><img src="" alt="thumb"></td>
-                            <td>{{item.id}}</td>
+                            <td>{{item.cid}}</td>
                             <td style="color: rgb(196, 196, 196); font-size: 13px;"></td>
                             <td><a routerLink="/detail/">View
                                     detail</a></td>
                             <td *ngIf="userService.user"><button class="btn btn-primary animated slideInRigh"
-                                    (click)="unfollowCrypto(item.id)">Follow</button></td>
+                                    (click)="unfollowCrypto(item.id)">Unfollow</button></td>
                         </tr>
                         <tr class="bg-white wow fadeInUp" *ngIf="firestoreService.portfolio.length == 0">
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td>Your portfolio is empty.</td>
-                            <td></td>
-                            <td *ngIf="userService.user"></td>
+                            <td colspan="6" style="text-align: center;">Your portfolio is empty.</td>
                         </tr>
                     </tbody>
                 </table>
