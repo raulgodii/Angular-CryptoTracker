@@ -16,9 +16,7 @@ export class UserControlService implements OnInit {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         // User is signed in
-        console.log("user: " + user);
         this.user = user;
-        console.log("ha iniciado sesion");
       } else {
         // User is signed out
         this.user = null;
