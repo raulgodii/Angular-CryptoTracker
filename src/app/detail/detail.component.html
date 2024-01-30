@@ -13,23 +13,15 @@
                 <div class="h-100">
                     <h1 class="display-6">{{ RequestAJAX.coinData.name }}</h1>
                     <p class="text-primary fs-5 mb-4">{{ RequestAJAX.coinData.symbol }}</p>
-                    <p>At CryptoTracker, we stand as the epitome of trust in the cryptocurrency realm. We provide a
-                        seamless experience for tracking digital assets, offering real-time insights and easy portfolio
-                        management.</p>
-                    <p class="mb-4">Our mission is to empower you with the knowledge needed to navigate the dynamic
-                        world of cryptocurrencies.</p>
-                    <div class="d-flex align-items-center mb-2">
+                    <p>{{ RequestAJAX.coinData.description.en }}</p>
+
+                    <div class="d-flex align-items-center mb-2" *ngFor="let item of RequestAJAX.coinData.categories">
                         <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                        <span>Trusted Platform</span>
+                        <span>{{ item }}</span>
                     </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                        <span>Real-time Insights</span>
-                    </div>
-                    <div class="d-flex align-items-center mb-4">
-                        <i class="fa fa-check bg-light text-primary btn-sm-square rounded-circle me-3 fw-bold"></i>
-                        <span>Effortless Portfolio Management</span>
-                    </div>
+
+                    <a class="fs-5 mb-5" [href]="RequestAJAX.coinData.links.homepage[0]" target="_blank">{{ RequestAJAX.coinData.links.homepage[0] }}</a>
+                    <br><br>
 
                     <button *ngIf="userService.user" class="btn btn-primary animated slideInRigh"
                         (click)="followCrypto(RequestAJAX.coinData.market_cap_rank, RequestAJAX.coinData.image.thumb, RequestAJAX.coinData.name, RequestAJAX.coinData.symbol, RequestAJAX.coinData.id)">Follow</button>

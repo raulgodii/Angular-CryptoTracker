@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
