@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserControlService } from '../user-control.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +13,23 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   email: any;
   pass: any;
   errorMessage: any = null;  // Variable para almacenar mensajes de error
 
 
-  constructor(public userService:UserControlService){
+  constructor(public userService:UserControlService, private scroll:ViewportScroller, private router:ActivatedRoute){
 
   }
+
+  ngOnInit(): void {
+    if(this.router.snapshot.fragment){
+      this.scroll.scrollToAnchor(this.router.snapshot.fragment);
+    } else {
+      this.scroll.scrollToPosition([0, 0]);
+    }
+}
 
   async signInUserPass() {
     try {

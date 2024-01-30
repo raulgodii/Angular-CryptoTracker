@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { getAuth, createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +13,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit{
 
   spinner: boolean = false;
   auth: any = getAuth();
@@ -21,6 +23,18 @@ export class SignUpComponent {
   signUpSucces:boolean = false;
 
   error: string | null = null;
+
+  constructor(private scroll:ViewportScroller, private router:ActivatedRoute){
+
+  }
+
+  ngOnInit(): void {
+    if(this.router.snapshot.fragment){
+      this.scroll.scrollToAnchor(this.router.snapshot.fragment);
+    } else {
+      this.scroll.scrollToPosition([0, 0]);
+    }
+}
 
   signUp() {
     // Reset errors
