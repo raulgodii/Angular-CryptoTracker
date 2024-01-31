@@ -1,27 +1,32 @@
-# AngularProject
+# CryptoTracker - Angular Web App
+![image](https://github.com/raulgodii/Angular-CryptoTracker/assets/102313699/773ee1ec-06fe-45b5-b818-0e0890d7b4d5)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
 
-## Development server
+>  Direct LINK: [Try it here](https://cryptotracker-f9030.web.app)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+CryptoTracker is a web application developed with Angular that allows you to track real-time information about cryptocurrencies. This app provides up-to-date data on prices, percentage changes, transaction volume, and more for a variety of popular cryptocurrencies.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Key Features
 
-## Build
+- **User Authentication:** Secure user registration and login functionality.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Firebase Integration:** Utilizes Firebase for user authentication and database storage.
 
-## Running unit tests
+- **Personal Tab:** Includes a personal section with a portfolio feature for tracking different cryptocurrencies.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Search Functionality:** Enables users to search for specific cryptocurrencies.
 
-## Running end-to-end tests
+- **Detailed View:** Provides detailed information about each cryptocurrency.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Database Storage:** All user-related and cryptocurrency data is stored in databases for persistent access.
 
-## Further help
+- **Responsive Design:** Ensures a seamless user experience across various devices.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  ![image](https://github.com/raulgodii/Angular-CryptoTracker/assets/102313699/5e947779-d608-44eb-b9d4-1be4c8465873)
+
+
+## Issues
+
+If you encounter any issues or have suggestions for improvements, please [create an issue](https://github.com/raulgodii/Angular-CryptoTracker/issues).
