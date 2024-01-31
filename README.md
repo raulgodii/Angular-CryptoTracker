@@ -5,8 +5,10 @@
 >  Direct LINK: [Try it here](https://cryptotracker-f9030.web.app)
 
 ## Description
+CryptoTracker is a responsive web application developed with Angular that enables users to track real-time information about cryptocurrencies. Key features include user authentication, Firebase integration for user management and database storage, a personal tab with a portfolio for tracking various cryptocurrencies, search functionality, and detailed information about each cryptocurrency.
 
-CryptoTracker is a web application developed with Angular that allows you to track real-time information about cryptocurrencies. This app provides up-to-date data on prices, percentage changes, transaction volume, and more for a variety of popular cryptocurrencies.
+The application fetches cryptocurrency data from the CoinGecko API, ensuring accurate and up-to-date information.
+
 
 ## Key Features
 
