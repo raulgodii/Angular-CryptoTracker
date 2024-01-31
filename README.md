@@ -1,27 +1,34 @@
-# AngularProject
+# CryptoTracker - Angular Web App
+![image](https://github.com/raulgodii/Angular-CryptoTracker/assets/102313699/773ee1ec-06fe-45b5-b818-0e0890d7b4d5)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
 
-## Development server
+>  Direct LINK: [Try it here](https://cryptotracker-f9030.web.app)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Description
+CryptoTracker is a responsive web application developed with Angular that enables users to track real-time information about cryptocurrencies. Key features include user authentication, Firebase integration for user management and database storage, a personal tab with a portfolio for tracking various cryptocurrencies, search functionality, and detailed information about each cryptocurrency.
 
-## Code scaffolding
+The application fetches cryptocurrency data from the CoinGecko API, ensuring accurate and up-to-date information.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Key Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **User Authentication:** Secure user registration and login functionality.
 
-## Running unit tests
+- **Firebase Integration:** Utilizes Firebase for user authentication and database storage.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Personal Tab:** Includes a personal section with a portfolio feature for tracking different cryptocurrencies.
 
-## Running end-to-end tests
+- **Search Functionality:** Enables users to search for specific cryptocurrencies.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Detailed View:** Provides detailed information about each cryptocurrency.
 
-## Further help
+- **Database Storage:** All user-related and cryptocurrency data is stored in databases for persistent access.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Responsive Design:** Ensures a seamless user experience across various devices.
+
+  ![image](https://github.com/raulgodii/Angular-CryptoTracker/assets/102313699/5e947779-d608-44eb-b9d4-1be4c8465873)
+
+
+## Issues
+
+If you encounter any issues or have suggestions for improvements, please [create an issue](https://github.com/raulgodii/Angular-CryptoTracker/issues).
